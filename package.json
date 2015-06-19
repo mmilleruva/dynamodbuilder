@@ -7,7 +7,7 @@
     "test": "mocha"
   },
   "author": "Michael Miller",
-  "license": "mmilleruva@gmail.com",
+  "license": "",
   "dependencies": {
     "underscore": "^1.8.3"
   },
