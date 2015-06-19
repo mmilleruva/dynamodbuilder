@@ -46,10 +46,19 @@ describe('Query', function(){
       };
       this.query = new Query(this.schema);
     });
+    it('should be able to set using text', function(){
+      var result = this.query
+        .keyConditionExpression('firstName = :name')
+        .expressionAttributeValue('firstName', ':name', 'mike')
+        .create();
+      expect(result.KeyConditionExpression).to.eql('firstName = :name');
+      expect(result.ExpressionAttributeValues[':name']).to.eql({S: 'mike'})
+    });
+
     it('should be able to set a condition expression', function(){
       var result = this.query.keyConditionExpression({
         key: 'firstName',
-        operator: operators.equals,
+        operator: "=",
         value: 'mike'
       }).create();
       expect(result.KeyConditionExpression).to.eql('firstName = :p1');
@@ -58,8 +67,8 @@ describe('Query', function(){
 
     it('should be able to set a multipe condition expressions', function(){
       var expressions = [
-        { key: 'firstName', operator: operators.equals, value: 'mike'},
-        { key: 'lastName',  operator: operators.equals, value: 'miller'}
+        { key: 'firstName', operator: "=", value: 'mike'},
+        { key: 'lastName',  operator: "=", value: 'miller'}
       ];
       var result = this.query.keyConditionExpression(expressions).create();
       expect(result.KeyConditionExpression).to.eql(
@@ -80,10 +89,20 @@ describe('Query', function(){
       };
       this.query = new Query(this.schema);
     });
+
+    it('should be able to set using text', function(){
+      var result = this.query
+        .filterExpression('firstName = :name')
+        .expressionAttributeValue('firstName', ':name', 'mike')
+        .create();
+      expect(result.FilterExpression).to.eql('firstName = :name');
+      expect(result.ExpressionAttributeValues[':name']).to.eql({S: 'mike'})
+    });
+
     it('should be able to set a condition expression', function(){
       var result = this.query.filterExpression({
         key: 'firstName',
-        operator: operators.equals,
+        operator: "=",
         value: 'mike'
       }).create();
       expect(result.FilterExpression).to.eql('firstName = :p1');
@@ -92,8 +111,8 @@ describe('Query', function(){
 
     it('should be able to set a multipe condition expressions', function(){
       var expressions = [
-        { key: 'firstName', operator: operators.equals, value: 'mike'},
-        { key: 'lastName',  operator: operators.equals, value: 'miller'}
+        { key: 'firstName', operator: "=", value: 'mike'},
+        { key: 'lastName',  operator: "=", value: 'miller'}
       ];
       var result = this.query.filterExpression(expressions).create();
       expect(result.FilterExpression).to.eql(
@@ -104,9 +123,9 @@ describe('Query', function(){
 
     it('should ignore nulls if option present', function(){
       var expressions = [
-        { key: 'firstName', operator: operators.equals, value: 'mike'},
-        { key: 'lastName',  operator: operators.equals, value: null},
-        { key: 'age',  operator: operators.equals, value: undefined}
+        { key: 'firstName', operator: "=", value: 'mike'},
+        { key: 'lastName',  operator: "=", value: null},
+        { key: 'age',  operator: "=", value: undefined}
       ];
       var opts = {
         ignoreNulls: true
