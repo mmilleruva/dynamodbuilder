@@ -46,10 +46,11 @@ describe('Query', function(){
       };
       this.query = new Query(this.schema);
     });
+
     it('should be able to set using text', function(){
       var result = this.query
         .keyConditionExpression('firstName = :name')
-        .expressionAttributeValue('firstName', ':name', 'mike')
+        .expressionAttributeValue(':name', 'mike')
         .create();
       expect(result.KeyConditionExpression).to.eql('firstName = :name');
       expect(result.ExpressionAttributeValues[':name']).to.eql({S: 'mike'})
@@ -93,7 +94,7 @@ describe('Query', function(){
     it('should be able to set using text', function(){
       var result = this.query
         .filterExpression('firstName = :name')
-        .expressionAttributeValue('firstName', ':name', 'mike')
+        .expressionAttributeValue(':name', 'mike')
         .create();
       expect(result.FilterExpression).to.eql('firstName = :name');
       expect(result.ExpressionAttributeValues[':name']).to.eql({S: 'mike'})

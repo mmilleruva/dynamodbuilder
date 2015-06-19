@@ -5,20 +5,14 @@ A builder library for dynamodb
 
 ```javascript
 
-var builder = require('dynamodbuilder');
+var Builder = require('dynamodbuilder');
 var dynamodb = require('aws').DynamoDB({
   accessKeyId: '<id>',
   secretAccessKey: '<secret>',
   region: '<region>'
 });
 
-var schema = {
-  "firstName": "S",
-  "lastName": "S",
-  "books": "SS",
-  "age": "N",
-  "optedIn": "BOOL"
-};
+var builder = new Builder();
 
 builder.addTable('myTable', schema);
 
@@ -27,7 +21,7 @@ var query = builder.query('myTable');
 // Using strings
 var queryObj = query
   .keyConditionExpression('firstName = :name')
-  .expressionAttributeValue('firstName', ':name', 'mike')
+  .expressionAttributeValue(':name', 'mike')
   .limit(100)
   .create();
 
@@ -90,7 +84,7 @@ to manually set the expressionAttribute.
 #### query.keyConditionExpression(conditionExpressionObj)
 * `conditionExpressionObj` - A condition expression object.
   * Example: `{key: 'name', operator: "=", value: 'mike' }`
-  * Note: When called this way an expression attribute value is automatically
+  * **Note:** When called this way an expression attribute value is automatically
     added to the query.
 
 #### query.keyConditionExpression(conditionExpressionArray)
@@ -101,10 +95,9 @@ All of the conditions will be `and`ed together.
 Follows the same pattern as `query.keyConditionExpression(...)` except the
 FilterExpression is updated instead of the KeyConditionExpression.
 
-### query.expressionAttributeValue(key, varName, value)
+### query.expressionAttributeValue(varName, value)
 
-### Arguments
-* key - the name of the field in your schema
+#### Arguments
 * varName - the name of the variable used in your expression (i.e. `:theName`)
 * value - The value being passed.
 

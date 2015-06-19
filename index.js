@@ -1,7 +1,7 @@
 var Query = require('./lib/query.js');
 
 var Builder = function(){
-  tables = {};
+  this.tables = {};
 }
 
 Builder.prototype.addTable = function(tableName, schema) {
