@@ -97,11 +97,11 @@ to manually set the expressionAttribute.
 Same as above except an array of conditionExpressionObjs can be passed in.
 All of the conditions will be `and`ed together.
 
-## query.filterExpression(...)
+### query.filterExpression(...)
 Follows the same pattern as `query.keyConditionExpression(...)` except the
 FilterExpression is updated instead of the KeyConditionExpression.
 
-## query.expressionAttributeValue(key, varName, value)
+### query.expressionAttributeValue(key, varName, value)
 
 ### Arguments
 * key - the name of the field in your schema
