@@ -2,7 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var Builder = require('../index');
 
-describe('Query', function(){
+describe('Builder', function(){
   beforeEach(function(){
     this.builder = new Builder();
     this.schema = {

@@ -1,6 +1,6 @@
 {
   "name": "dynamodbuilder",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A builder library for DynamoDB queries",
   "main": "index.js",
   "scripts": {
