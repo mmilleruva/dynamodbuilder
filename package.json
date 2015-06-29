@@ -1,6 +1,6 @@
 {
   "name": "dynamodbuilder",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A builder library for DynamoDB queries",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,10 @@
   },
   "author": "Michael Miller",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mmilleruva/dynamodbuilder"
+  },
   "dependencies": {
     "underscore": "^1.8.3"
   },
