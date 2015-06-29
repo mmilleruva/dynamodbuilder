@@ -1,8 +1,8 @@
 var Query = require('./lib/query.js');
-var BinaySet = require('binary-set');
-var Binay = require('binary');
-var NumberSet = require('number-set');
-var StringSet = require('string-set');
+var BinaySet = require('./lib/binary-set');
+var Binay = require('./lib/binary');
+var NumberSet = require('./lib/number-set');
+var StringSet = require('./lib/string-set');
 
 var Builder = function(){
 }
