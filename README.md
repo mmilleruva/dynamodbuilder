@@ -14,8 +14,6 @@ var dynamodb = require('aws').DynamoDB({
 
 var builder = new Builder();
 
-builder.addTable('myTable', schema);
-
 var query = builder.query('myTable');
 
 // Using strings
