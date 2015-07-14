@@ -24,4 +24,11 @@ describe('createValueObject', function(){
     var result = helper.valueObject({"hello": "world"});
     expect(result).to.eql({'M': {"hello": "world"}});
   });
+
+    it('should return an boolean value object for booleans', function(){
+    var result = helper.valueObject(false);
+    expect(result).to.eql({BOOL: false});
+    result = helper.valueObject(true);
+    expect(result).to.eql({BOOL: true});
+  });
 });
