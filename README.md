@@ -1,4 +1,5 @@
 # dynamodbuilder
+https://travis-ci.org/mmilleruva/dynamodbuilder.svg?branch=master
 A builder library for dynamodb
 
 ## Usage
