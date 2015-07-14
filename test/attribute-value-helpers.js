@@ -14,4 +14,14 @@ describe('createValueObject', function(){
     var result = helper.valueObject( 2);
     expect(result).to.eql({'N': "2"});
   });
+
+  it('should create an array value object for arrays', function(){
+    var result = helper.valueObject([1,2,3]);
+    expect(result).to.eql({'L': [1,2,3]});
+  });
+
+  it('should return an object value object for objects', function(){
+    var result = helper.valueObject({"hello": "world"});
+    expect(result).to.eql({'M': {"hello": "world"}});
+  });
 });
